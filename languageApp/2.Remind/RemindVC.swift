@@ -85,7 +85,7 @@ extension RemindVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellRemind", for: indexPath) as! RemindTableCell
         cell.timeRimind.text = datas?[indexPath.row].time1
         cell.detailRemind.text = datas?[indexPath.row].text1
-        if datas?[indexPath.row].isCheck == false {
+        if datas?[indexPath.row].isCheck == true {
             cell.Remindnumber.text = "nhiều lần"
         } else {
             cell.Remindnumber.text = "một lần"
