@@ -5,7 +5,7 @@
 [I. Mở đầu](#Modau)
 
 [II. Nội dung chính App](#noidungchinhapp)
-- [1. Học theo chủ đề](#1. Học theo chủ đề:)
+- [1. Học theo chủ đề](#Họctheochủđề)
 - [2. Nhắc nhở hằng ngày](#nhacnhohangngay)
 - [3. Ôn tập từ vựng](#ontaptuvung)
 - [4. Hướng dẫn sử dụng](#huongdansudung)
