@@ -9,10 +9,10 @@
 import UIKit
 
 class RemindTableCell: UITableViewCell {
-
+    
     @IBOutlet weak var viewMain: UIView!
     @IBOutlet weak var timeRimind: UILabel!
-   
+    
     @IBOutlet weak var Remindnumber: UILabel!
     
     @IBOutlet weak var detailRemind: UILabel!
@@ -26,10 +26,10 @@ class RemindTableCell: UITableViewCell {
         viewMain.layer.cornerRadius = 10
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

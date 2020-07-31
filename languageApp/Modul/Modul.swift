@@ -22,7 +22,9 @@ struct DetailThemefake {
     var wordMean: String = ""
     var exampleWord: String = ""
     var readConversion: String = ""
-    var clickReview: Bool 
+    var clickReview: Bool
+    var ImageDetail: String = ""
+    var audio: String = ""
 
 }
 struct Question {
@@ -48,16 +50,7 @@ enum Time {
     case pause
 }
 
-//class DayRemind {
-//    var isCheck: Bool = true
-//    var time1 : String?
-//    var text1 : String?
-//    init(isCheck: Bool, time1: String, text1: String){
-//        self.isCheck = isCheck
-//        self.time1 = time1
-//        self.text1 = text1
-//    }
-//}
+
 
 
 

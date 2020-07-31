@@ -54,7 +54,7 @@ class DetailTheme: UIViewController {
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
         cancelButton.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton
     }
@@ -92,13 +92,13 @@ extension DetailTheme: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath) as! DetailTableView
         cell.dataTable = dataTheme[indexPath.row]
-//        cell.passAction = {[weak self] in
-//            guard let strongSelf = self else { return }
-//            let a = strongSelf.dataTheme[indexPath.row].clickReview
-//            strongSelf.dataTheme[indexPath.row].clickReview = !a
-//            tableView.reloadData()
-            
-//        }
+        //        cell.passAction = {[weak self] in
+        //            guard let strongSelf = self else { return }
+        //            let a = strongSelf.dataTheme[indexPath.row].clickReview
+        //            strongSelf.dataTheme[indexPath.row].clickReview = !a
+        //            tableView.reloadData()
+        
+        //        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

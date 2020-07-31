@@ -7,7 +7,10 @@
 //
 
 import UIKit
-
+enum State {
+    case create
+    case update
+}
 class ThemeMain: UIViewController {
     var colectionTheme: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,21 +22,26 @@ class ThemeMain: UIViewController {
         return colectionTheme
     }()
     var datas : [Theme] = []
+    var isState: State = .create
     override func viewDidLoad() {
         datas = fakeDatas()
         super.viewDidLoad()
         setupNavi()
         setupLayput()
+        //        isState = .create
     }
     func setupNavi(){
         view.backgroundColor = UIColor.colorBackground()
         title = "Chủ đề"
+        // title color
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        // navigation color
         navigationController?.navigationBar.barTintColor = UIColor.colorNavigation()
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
-    
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        
+
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
         cancelButton.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton
     }
@@ -44,7 +52,14 @@ class ThemeMain: UIViewController {
         
         navigation.modalPresentationStyle = .fullScreen
         present(navigation, animated: true, completion: nil)
-
+        //        dismiss(animated: true, completion: nil)
+        //        if isState == .create{
+        //            navigationController?.popViewController(animated: true)
+        //        } else {
+        ////            dismiss(animated: true, completion: nil)
+        //            dismiss(animated: true) {            self.navigationController?.popToRootViewController(animated: true)
+        //            }
+        //        }
     }
     
     func setupLayput(){
@@ -67,11 +82,11 @@ extension ThemeMain: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ThemeColectionView
-
+        
         
         cell.contentView.backgroundColor = .clear
         cell.labelLangage.text = datas[indexPath.row].title
-
+        
         cell.imageTheme.image = UIImage(named: datas[indexPath.row].ImageTheme)
         return cell
     }
@@ -90,14 +105,12 @@ extension ThemeMain: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailTheme = DetailTheme()
-    
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(detailTheme, animated: true)
         
         title = datas[indexPath.row].title
-        
-        
         detailTheme.dataDetailTheme = datas[indexPath.row]
     }
     

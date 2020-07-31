@@ -10,208 +10,184 @@ import Foundation
 // class cho ôn tập từ vựng
 func fakeDatas() -> [Theme] {
     // tạo câu hỏi
-    let question1 = Question(question: "Nghĩa phổ biến của : Cancellation?",
+    let question1 = Question(question: "Nghĩa phổ biến của : Abide by?",
                              indexRightAnswer: 4,
-                             answers: [Answer(answer: "(n): sự bãi bỏ, hủy bỏ", isSelected: false),
-                                       Answer(answer: "(n)sự hứa hẹn, hứa hôn", isSelected: false),
-                                       Answer(answer: "(v): quyết định, xác định", isSelected: false),
-                                       Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme1 = DetailThemefake(newWord: "Abide by", wordMean: "/ə'baid/", exampleWord: "Từ loại: (v): tôn trọng, tuân theo, giữ (lời)", readConversion: "Giải thích: to accept and act according to a law, an agreement", clickReview: false)
+                             answers: [Answer(answer: "A.(n)sự bãi bỏ, hủy bỏ", isSelected: false),
+                                       Answer(answer: "B.(n)sự hứa hẹn, hứa hôn", isSelected: false),
+                                       Answer(answer: "C.(v)quyết định, xác định", isSelected: false),
+                                       Answer(answer: "D.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
+    let detailTheme1 = DetailThemefake(newWord: "Abide by", wordMean: "/ə'baid/", exampleWord: "Từ loại: (v) tôn trọng, tuân theo, giữ (lời)", readConversion: "Giải thích: to accept and act according to a law, an agreement", clickReview: false, ImageDetail: "Accounting", audio: "abide_by.mp3")
     
-    let question2 = Question(question: "Nghĩa phổ biến của : Abide by?",
-                             indexRightAnswer: 2,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ, dự phòng", isSelected: false)])
-    let detailTheme2 = DetailThemefake(newWord: "Agreement", wordMean: "/ə'gri:mənt/", exampleWord: "Từ loại: (n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", readConversion: "Giải thích: an arrangement, a promise or a contract made with somebody", clickReview: false)
+    let question2 = Question(question: "Nghĩa phổ biến của : Agreement?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme2 = DetailThemefake(newWord: "Agreement", wordMean: "/ə'gri:mənt/", exampleWord: "Từ loại: (n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", readConversion: "Giải thích: an arrangement, a promise or a contract made with somebody", clickReview: false, ImageDetail: "Trains", audio:"agreement.mp3")
     let question3 = Question(question: "Nghĩa phổ biến của : Determine?",
+                             indexRightAnswer: 3,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(v)quyết định, xác định, định rõ; quyết tâm, kiên quyết", isSelected: false),
+                                       Answer(answer: "D.(n)sự dự liệu, dự trữ, dự phòng", isSelected: false)])
+    let detailTheme3 = DetailThemefake(newWord: "Determine", wordMean: "/di'tə:min/", exampleWord: " Từ loại: (v): quyết định, xác định, định rõ; quyết tâm, kiên quyết", readConversion: "Giải thích: to discover the facts about something", clickReview: false, ImageDetail: "Taxes", audio:"determine.mp3")
+    let question4 = Question(question: "Nghĩa phổ biến của : Engage?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(v)Tham gia, cam kết, (n)sự hứa hẹn, hứa hôn", isSelected: false)])
+    let detailTheme4 = DetailThemefake(newWord: "Engage", wordMean: "/in'geidʤ/", exampleWord: "Từ loại: (v)Tham gia, cam kết, (n)sự hứa hẹn, hứa hôn", readConversion: "Giải thích: to become involved in, to participate", clickReview: false, ImageDetail: "Events", audio:"engage.mp3")
+    let question5 = Question(question: "Nghĩa phổ biến của : Assurance?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", isSelected: false)])
+    let detailTheme5 = DetailThemefake(newWord: "Assurance", wordMean: "/ə'ʃuərəns/", exampleWord: "Từ loại: (n)sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", readConversion: "Giải thích: a statement that something will certainly be true or will certainly happen", clickReview: false, ImageDetail: "Hospitals", audio:"assurance.mp3")
+    let question6 = Question(question: "Nghĩa phổ biến của : Cancellation?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", isSelected: false),
+                                       Answer(answer: "D.(n)sự bãi bỏ, hủy bỏ", isSelected: false)])
+    let detailTheme6 = DetailThemefake(newWord: "Cancellation", wordMean: "/,kænse'leiʃn/", exampleWord: "Từ loại: (n) sự bãi bỏ, hủy bỏ", readConversion: "Giải thích: a decision to stop something that has already been arranged from happening", clickReview: false, ImageDetail: "Theater", audio:"cancellation.mp3")
+    let question7 = Question(question: "Nghĩa phổ biến của : Establish?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự bãi bỏ, hủy bỏ", isSelected: false),
+                                       Answer(answer: "D.(v)thiết lập, thành lập; xác minh, chứng minh, củng cố", isSelected: false)])
+    let detailTheme7 = DetailThemefake(newWord: "Establish", wordMean: "/is'tæbliʃ/", exampleWord: "Từ loại: (v)thiết lập, thành lập; xác minh, chứng minh, củng cố", readConversion: "Giải thích: to start or create an organization, a system", clickReview: false, ImageDetail: "Computers", audio:"establish.mp3")
+    let question8 = Question(question: "Nghĩa phổ biến của : Specific?",
                              indexRightAnswer: 2,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(v): quyết định, xác định, định rõ; quyết tâm, kiên quyết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ, dự phòng", isSelected: false)])
-    let detailTheme3 = DetailThemefake(newWord: "Determine", wordMean: "/di'tə:min/", exampleWord: " Từ loại: (v): quyết định, xác định, định rõ; quyết tâm, kiên quyết", readConversion: "Giải thích: to discover the facts about something", clickReview: false)
-    let question4 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme4 = DetailThemefake(newWord: "Engage", wordMean: "/in'geidʤ/", exampleWord: "Từ loại: (v)Tham gia, cam kết, (n)sự hứa hẹn, hứa hôn", readConversion: "Giải thích: to become involved in, to participate", clickReview: false)
-    let question5 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme5 = DetailThemefake(newWord: "Assurance", wordMean: "/ə'ʃuərəns/", exampleWord: "Từ loại: (n): sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", readConversion: "Giải thích: a statement that something will certainly be true or will certainly happen", clickReview: false)
-    let question6 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme6 = DetailThemefake(newWord: "Cancellation", wordMean: "/,kænse'leiʃn/", exampleWord: "Từ loại: (n): sự bãi bỏ, hủy bỏ", readConversion: "Giải thích: a decision to stop something that has already been arranged from happening", clickReview: false)
-    let question7 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme7 = DetailThemefake(newWord: "Establish", wordMean: "/is'tæbliʃ/", exampleWord: "Từ loại: (v): thiết lập, thành lập; xác minh, chứng minh, củng cố", readConversion: "Giải thích: to start or create an organization, a system", clickReview: false)
-    let question8 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme8 = DetailThemefake(newWord: "specific", wordMean: "/spi'sifik/", exampleWord: "Từ loại: (adj): riêng biệt, cụ thể, đặc trưng; rõ ràng, rành mạch", readConversion: "Giải thích: detailed abd exact", clickReview: false)
-    let question9 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                             indexRightAnswer: 4,
-                             answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                       Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                       Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                       Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-     let detailTheme9 = DetailThemefake(newWord: "Obligate", wordMean: "/'ɔbligeit/", exampleWord: "Từ loại: (v): bắt buộc, ép buộc", readConversion: "Giải thích: to bind legally or morally", clickReview: false)
-    let question10 = Question(question: "Nghĩa phổ biến của : Agreement?",
+                             answers: [Answer(answer: "A.(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(adj)riêng biệt, cụ thể, đặc trưng; rõ ràng, rành mạch", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v)", isSelected: false)])
+    let detailTheme8 = DetailThemefake(newWord: "Specific", wordMean: "/spi'sifik/", exampleWord: "Từ loại: (adj)riêng biệt, cụ thể, đặc trưng; rõ ràng, rành mạch", readConversion: "Giải thích: detailed abd exact", clickReview: false, ImageDetail: "Pharmacy", audio:"specific.mp3")
+    let question9 = Question(question: "Nghĩa phổ biến của : Obligate?",
+                             indexRightAnswer: 3,
+                             answers: [Answer(answer: "A.(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(v)bắt buộc, ép buộc", isSelected: false),
+                                       Answer(answer: "D.(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+     let detailTheme9 = DetailThemefake(newWord: "Obligate", wordMean: "/'ɔbligeit/", exampleWord: "Từ loại: (v): bắt buộc, ép buộc", readConversion: "Giải thích: to bind legally or morally", clickReview: false, ImageDetail: "Music", audio:"obligate.mp3")
+    let question10 = Question(question: "Nghĩa phổ biến của : party?",
+                              indexRightAnswer: 3,
+                              answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)đảng, phái, đội, nhóm; người tham dự/tham gia; buổi liên hoan", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme10 = DetailThemefake(newWord: "party", wordMean: "/'pɑ:ti/", exampleWord: "Từ loại: (n): đảng, phái, đội, nhóm; người tham dự/tham gia; buổi liên hoan, buổi tiệc.", readConversion: "Giải thích: one of the people or groups of people involved in a legal agreemen", clickReview: false, ImageDetail: "Contracts", audio:"party.mp3")
+    let question11 = Question(question: "Nghĩa phổ biến của : provision?",
+                              indexRightAnswer: 1,
+                              answers: [Answer(answer: "A.(n)sự dự liệu, dự trữ, dự phòng, cung cấp; điều khoản", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau ", isSelected: false)])
+    let detailTheme11 = DetailThemefake(newWord: "provision", wordMean: "/provision/", exampleWord: "Từ loại: (n)sự dự liệu, dự trữ, dự phòng, cung cấp; điều khoản", readConversion: "Giải thích: a condition or an arrangement in a legal document", clickReview: false, ImageDetail: "Correspondence", audio:"provision.mp3")
+    let question12 = Question(question: "Nghĩa phổ biến của : resolve?",
                               indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme10 = DetailThemefake(newWord: "party", wordMean: "/'pɑ:ti/", exampleWord: "Từ loại: (n): đảng, phái, đội, nhóm; người tham dự/tham gia; buổi liên hoan, buổi tiệc.", readConversion: "Giải thích: one of the people or groups of people involved in a legal agreemen", clickReview: false)
-    let question11 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme11 = DetailThemefake(newWord: "provision", wordMean: "/provision/", exampleWord: "Từ loại: (n): sự dự liệu, dự trữ, dự phòng, cung cấp; điều khoản", readConversion: "Giải thích: a condition or an arrangement in a legal document", clickReview: false)
-    let question12 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme12 = DetailThemefake(newWord: "resolve (n)", wordMean: "/ri'zɔlv/", exampleWord: "The manager resolved to clean out all the files at the end of the week.", readConversion: "sự kiên quyết", clickReview: false)
+                              answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme12 = DetailThemefake(newWord: "resolve (n)", wordMean: "/ri'zɔlv/", exampleWord: "Từ loại:(v) giải quyết, (n) sự kiên quyết / sự tin chắc", readConversion: "Giải thích: to find an acceptable solution to a problem", clickReview: false, ImageDetail: "Business planning", audio:"resolve.mp3")
     
     let themes1 = Theme(ID: 1, title: "Contracts", ImageTheme : "Contracts.jpg",meanTitle: "Hợp Đồng", questions: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12], clickColect: [detailTheme1, detailTheme2, detailTheme3, detailTheme4, detailTheme5, detailTheme6, detailTheme7, detailTheme8, detailTheme9, detailTheme10, detailTheme11, detailTheme12], isCheckTheme: false )
     
     //2
-    let question13 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme13 = DetailThemefake(newWord: "attract (v)", wordMean: "/ə'trækt/", exampleWord: "The two parties agreed to abide by the judge's decision", readConversion: "hấp dẫn, lôi cuốn, thu hút", clickReview: false)
-      
-     
+    let question13 = Question(question: "Nghĩa phổ biến của : Abide by?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(n)sự bãi bỏ, hủy bỏ", isSelected: false),
+                                       Answer(answer: "B.(n)sự hứa hẹn, hứa hôn", isSelected: false),
+                                       Answer(answer: "C.(v)quyết định, xác định", isSelected: false),
+                                       Answer(answer: "D.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
+    let detailTheme13 = DetailThemefake(newWord: "attract", wordMean: "/ə'trækt/", exampleWord: "Từ loại:(v) hấp dẫn, lôi cuốn, thu hút", readConversion: "Giải thích: to draw by appeal", clickReview: false)
+    
     let question14 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme14 = DetailThemefake(newWord: "compare (n)", wordMean: "/kəm'peə/", exampleWord: "Once the customer compared the two products, her choice was easy.", readConversion: " so sánh, đối chiếu", clickReview: false)
-         
-       
-    let question15 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme15 = DetailThemefake(newWord: "consume (v)", wordMean: "/kən'vins/", exampleWord: " The printer consumes more toner than the downstairs printer.", readConversion: "tiêu thụ, tiêu dùng", clickReview: false)
-           
-          
-    let question16 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-     let detailTheme16 = DetailThemefake(newWord: "currently (adv)", wordMean: "/ˈkʌrəntli/", exampleWord: "hiện thời, hiện nay, lúc này", readConversion: "đồng ý, tán thành", clickReview: false)
-    let question17 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme17 = DetailThemefake(newWord: "Assurance (n)", wordMean: "/ə'ʃuərəns/", exampleWord: "The sales associate gave his assurance that the missing keyboard would be replaced the next day.", readConversion: "sự chắc chắn", clickReview: false)
-       
-       
-    let question18 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme18 = DetailThemefake(newWord: "cancellation (n)", wordMean: "/,kænse'leiʃn/", exampleWord: " The cancelation of her flight caused her problems for the rest of the week", readConversion: "sự hủy bỏ, sự bãi bỏ", clickReview: false)
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme14 = DetailThemefake(newWord: "compare", wordMean: " /kəm'peə/", exampleWord: "Từ loại: (v)so sánh, đối chiếu", readConversion: "Giải thích: to examine people or things to see how they are similar and how they are different", clickReview: false)
+   
+    let question15 = Question(question: "Nghĩa phổ biến của : Engage?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(v)Tham gia, cam kết, (n)sự hứa hẹn, hứa hôn", isSelected: false)])
+    let detailTheme15 = DetailThemefake(newWord: "competition", wordMean: "/,kɔmpi'tiʃn/", exampleWord: "Từ loại: (v)‹sự/cuộc› cạnh tranh, tranh giành, thi đấu", readConversion: "Giải thích: a situation in which people or organizations compete with each other for something that not everyone can have", clickReview: false)
+    let question16 = Question(question: "Nghĩa phổ biến của : consume?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n): sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", isSelected: false)])
+    let detailTheme16 = DetailThemefake(newWord: "consume", wordMean: "/kən'sju:m/", exampleWord: "Từ loại: (v)tiêu thụ, tiêu dùng", readConversion: "Giải thích: to use something, especially fuel, engery or time", clickReview: false)
+    let question17 = Question(question: "Nghĩa phổ biến của : convince?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự cam đoan, bảo đảm, chắc chắn; sự tin chắc, tự tin", isSelected: false),
+                                       Answer(answer: "D.(n)sự bãi bỏ, hủy bỏ", isSelected: false)])
+    let detailTheme17 = DetailThemefake(newWord: "convince", wordMean: "/kən'vins/", exampleWord: "Từ loại: (v)Thuyết phục", readConversion: "Giải thích: to make somebody / yourselft believe that something is true", clickReview: false)
+    let question18 = Question(question: "Nghĩa phổ biến của : Establish?",
+                             indexRightAnswer: 4,
+                             answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(n)sự bãi bỏ, hủy bỏ", isSelected: false),
+                                       Answer(answer: "D.(v)thiết lập, thành lập; xác minh, chứng minh, củng cố", isSelected: false)])
+    let detailTheme18 = DetailThemefake(newWord: "currently", wordMean: "/kən'vins/", exampleWord: "Từ loại: (v)Thuyết phục", readConversion: "Giải thích: to make somebody / yourselft believe that something is true", clickReview: false)
+    let question19 = Question(question: "Nghĩa phổ biến của : Specific?",
+                             indexRightAnswer: 2,
+                             answers: [Answer(answer: "A.(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(adj)riêng biệt, cụ thể, đặc trưng; rõ ràng, rành mạch", isSelected: false),
+                                       Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                       Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v)", isSelected: false)])
+    let detailTheme19 = DetailThemefake(newWord: "fad", wordMean: "/spi'sifik/", exampleWord: "Từ loại: (n): mốt nhất thời, sự thích thú tạm thời; dở hơi, gàn dở", readConversion: "Giải thích: at the present time", clickReview: false)
+    let question20 = Question(question: "Nghĩa phổ biến của : Obligate?",
+                             indexRightAnswer: 3,
+                             answers: [Answer(answer: "A.(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                       Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                       Answer(answer: "C.(v)bắt buộc, ép buộc", isSelected: false),
+                                       Answer(answer: "D.(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+     let detailTheme20 = DetailThemefake(newWord: "inspiration", wordMean: "/,inspə'reiʃn/", exampleWord: "Từ loại: (n)‹sự/người/vật› truyền cảm hứng, gây cảm hứng", readConversion: "Giải thích: a thing or person that arouses a feeling", clickReview: false)
+    let question21 = Question(question: "Nghĩa phổ biến của : party?",
+                              indexRightAnswer: 3,
+                              answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)đảng, phái, đội, nhóm; người tham dự/tham gia; buổi liên hoan", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme21 = DetailThemefake(newWord: "market", wordMean: "/'mɑ:kit/", exampleWord: "Từ loại: (v): thị trường, chợ, nơi mua bán sản phẩm...", readConversion: "Giải thích: to advertise and offer a product for sale", clickReview: false)
     
-    
-    let question19 = Question(question: "Nghĩa phổ biến của : Agreement?",
+    let question22 = Question(question: "Nghĩa phổ biến của : provision?",
+                              indexRightAnswer: 1,
+                              answers: [Answer(answer: "A.(n)sự dự liệu, dự trữ, dự phòng, cung cấp; điều khoản", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau ", isSelected: false)])
+    let detailTheme22 = DetailThemefake(newWord: "persuasion", wordMean: "/pə'sweiʤn/", exampleWord: "Từ loại: (n)‹sự› thuyết phục, làm cho tin (chú ý: persuade > convince)", readConversion: "Giải thích: the power to influence, a deep conviction or belief.", clickReview: false)
+    let question23 = Question(question: "Nghĩa phổ biến của : resolve?",
                               indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme19 = DetailThemefake(newWord: "engage establish (v)", wordMean: "/in'geidʤ/", exampleWord: " He engaged us in a fascinating discussion about current business law", readConversion: "Tham gia,cam kết", clickReview: false)
+                              answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                        Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                        Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                        Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+    let detailTheme23 = DetailThemefake(newWord: "productive", wordMean: "/prəˈdʌktɪv/", exampleWord: "Từ loại: (adj): sản xuất, sinh sản; sinh lợi nhiều, có hiệu quả", readConversion: "Giải thích: making goods or growing crops.", clickReview: false)
+    let question24 = Question(question: "Nghĩa phổ biến của : resolve?",
+                                 indexRightAnswer: 4,
+                                 answers: [Answer(answer: "A.(v)tôn trọng, tuân theo, giữ (lời)", isSelected: false),
+                                           Answer(answer: "B.(v)Tham gia, cam kết", isSelected: false),
+                                           Answer(answer: "C.(n)sự dự liệu, dự trữ,", isSelected: false),
+                                           Answer(answer: "D.(n)hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau", isSelected: false)])
+       let detailTheme24 = DetailThemefake(newWord: "satisfaction", wordMean: "/prəˈdʌktɪv/", exampleWord: "Từ loại: (n): sự làm thỏa mãn, sự hài lòng", readConversion: "Giải thích: the good feeling that you have when you have achieved something", clickReview: false)
     
-    
-    let question20 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    
-    let detailTheme20 = DetailThemefake(newWord: "establish (v)", wordMean: "/is'tæbliʃ/", exampleWord: "The merger of the two company established a powerful new corporation", readConversion: "thiết lập; xác minh", clickReview: false)
-    
-    
-    let question21 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme21 = DetailThemefake(newWord: "obligate (v)", wordMean: "/'ɔbligeit/", exampleWord: "The contractor was obligated by the contract to work 40 hours a week.", readConversion: "bắt buộc, ép buộc", clickReview: false)
-    
- 
-    let question22 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    let detailTheme22 = DetailThemefake(newWord: "party (n)", wordMean: "/'pɑ:ti/", exampleWord: "The parties agreed to settlement in their contract dispute.", readConversion: "buổi liên hoan, buổi tiệc", clickReview: false)
-    
-    let question23 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-     let detailTheme23 = DetailThemefake(newWord: "provision (n)", wordMean: "/provision/", exampleWord: "The father made provision for his children through his will.", readConversion: "sự dự trữ; điều khoản", clickReview: false)
-    let question24 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-     let detailTheme24 = DetailThemefake(newWord: "resolve (n)", wordMean: "/ri'zɔlv/", exampleWord: "The manager resolved to clean out all the files at the end of the week.", readConversion: "sự kiên quyết", clickReview: false)
-    let question25 = Question(question: "Nghĩa phổ biến của : Agreement?",
-                              indexRightAnswer: 4,
-                              answers: [Answer(answer: "(v): tôn trọng, tuân theo, giữ (lời)", isSelected: false),
-                                        Answer(answer: "(v)Tham gia, cam kết", isSelected: false),
-                                        Answer(answer: "(n): sự dự liệu, dự trữ,", isSelected: false),
-                                        Answer(answer: "(n): hợp đồng, giao kèo, sự đồng ý/thỏa thuận với nhau (v): tôn trọng, tuân theo, giữ (lời)", isSelected: false)])
-    
-    let detailTheme25 = DetailThemefake(newWord: "specific (adj)", wordMean: "/spi'sifik/", exampleWord: " The customer's specific complaint was not addressed in his e-mail", readConversion: "riêng biệt,đặc trưng", clickReview: false)
-    
-    
-    let themes2 = Theme(ID: 2,title: "Marketing",ImageTheme: "Marketing.jpg", meanTitle: "kế toán", questions: [question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24, question25], clickColect: [detailTheme13, detailTheme14, detailTheme15, detailTheme16, detailTheme17, detailTheme18, detailTheme19, detailTheme20, detailTheme21, detailTheme22, detailTheme23, detailTheme24, detailTheme25], isCheckTheme: false )
+    let themes2 = Theme(ID: 2,title: "Marketing",ImageTheme: "Marketing.jpg", meanTitle: "kế toán", questions: [question13, question14, question15, question16, question17, question18, question19, question20, question21, question22, question23, question24], clickColect: [detailTheme13, detailTheme14, detailTheme15, detailTheme16, detailTheme17, detailTheme18, detailTheme19, detailTheme20, detailTheme21, detailTheme22, detailTheme23, detailTheme24], isCheckTheme: false )
     
     // cac chu de ngon ngu
     let themes3 = Theme(ID: 3,title: "Warranties", ImageTheme: "Warranties.jpg", meanTitle: "Bảo hành", isCheckTheme: false)

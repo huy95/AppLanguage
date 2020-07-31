@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import AVFoundation
 class DetailTableView: UITableViewCell {
-    
+    var soundPlayer: AVAudioPlayer?
     var dataTable: DetailThemefake? {
             didSet {
                 if let dataTable = dataTable {
@@ -17,12 +17,12 @@ class DetailTableView: UITableViewCell {
                     label11.text = dataTable.wordMean
                     label2.text = dataTable.readConversion
                     label3.text = dataTable.exampleWord
-//                    imageCheck.image = UIImage(named: dataTable.clickReview ? "ic_uncheck" : "ic_checked")
-                    
+                    imageCheck.image = UIImage(named: dataTable.ImageDetail)
+                    test = dataTable.audio
                 }
             }
         }
-     var passAction: (() -> Void)?
+//     var passAction: (() -> Void)?
     var containView: UIView = {
         let containView = UIView()
         containView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,59 +83,94 @@ class DetailTableView: UITableViewCell {
     var imageCheck : UIImageView = {
        let imageCheck = UIImageView()
          imageCheck.translatesAutoresizingMaskIntoConstraints = false
-//        imageCheck.image = UIImage(named: "ic_uncheck")
+        imageCheck.contentMode = .scaleAspectFit
         return imageCheck
     }()
+    var check : String? = ""
+//    var buttonAudio : UIButton = {
+//        let buttonAudio = UIButton()
+//         buttonAudio.translatesAutoresizingMaskIntoConstraints = false
+//        buttonAudio.setImage(UIImage(named: "audioIcon"), for: .normal)
+//        buttonAudio.addTarget(self, action: #selector(playaudio), for: .touchUpInside)
+//        buttonAudio.backgroundColor = .red
+//        return buttonAudio
+//    }()
+    var buttonAudio : UIImageView = {
+            let buttonAudio = UIImageView()
+             buttonAudio.translatesAutoresizingMaskIntoConstraints = false
+        buttonAudio.image = UIImage(named: "audioIcon")
+            return buttonAudio
+        }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+    var test: String?
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupLayout()
         self.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 100)
-        
-    }
-    func passData(){
-        imageCheck.isUserInteractionEnabled = true
+        buttonAudio.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(changeSelect))
-        imageCheck.addGestureRecognizer(gesture)
+        buttonAudio.addGestureRecognizer(gesture)
+        // Initialization code
+    
     }
     @objc func changeSelect(){
         // B2: gọi closure
-               // ? để nếu không có chỗ nào đăng kí closure này thì thôi không gọi đến closure
-        passAction?()
+        // ? để nếu không có chỗ nào đăng kí closure này thì thôi không gọi đến closure
+        playSound()
+        // ?? neu food.name nil thi lay gia tri mac dinh
+
     }
+
     func setupLayout(){
+        
         self.addSubview(containView)
-        containView.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        containView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
-        containView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
-        containView.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
+        containView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        containView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
+        containView.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        containView.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true
         
+        containView.addSubview(imageCheck)
+        imageCheck.topAnchor.constraint(equalTo: containView.topAnchor, constant: 10).isActive = true
+        imageCheck.bottomAnchor.constraint(equalTo: containView.bottomAnchor, constant: -10).isActive = true
+        imageCheck.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10).isActive = true
+        imageCheck.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
+        containView.addSubview(buttonAudio)
+        buttonAudio.topAnchor.constraint(equalTo: containView.topAnchor, constant: 10).isActive = true
+        buttonAudio.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10).isActive = true
+        buttonAudio.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        buttonAudio.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+    
         containView.addSubview(stackView1)
         stackView1.topAnchor.constraint(equalTo: containView.topAnchor, constant: 5).isActive = true
-        stackView1.bottomAnchor.constraint(equalTo: containView.bottomAnchor, constant: -5).isActive = true
-        stackView1.leftAnchor.constraint(equalTo: containView.leftAnchor, constant: 4).isActive = true
-        stackView1.rightAnchor.constraint(equalTo: containView.rightAnchor, constant: -30).isActive = true
+        stackView1.bottomAnchor.constraint(equalTo: containView.bottomAnchor, constant: -2).isActive = true
+        stackView1.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 80).isActive = true
+        stackView1.rightAnchor.constraint(equalTo: buttonAudio.leftAnchor, constant: -5).isActive = true
+//
         stackView1.addArrangedSubview(stackView2)
-        stackView2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-        stackView2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         stackView2.addArrangedSubview(label1)
-
         stackView2.addArrangedSubview(label11)
-        label1.leadingAnchor.constraint(equalTo: containView.leadingAnchor, constant: 10).isActive = true
-//        stackView2.addArrangedSubview(imageCheck)
-//        imageCheck.heightAnchor.constraint(equalToConstant: 35).isActive = true
-//        imageCheck.widthAnchor.constraint(equalToConstant: 35).isActive = true
-        
-        
         stackView1.addArrangedSubview(label2)
-        label2.leadingAnchor.constraint(equalTo: containView.leadingAnchor, constant: 10).isActive = true
         stackView1.addArrangedSubview(label3)
-        label3.leadingAnchor.constraint(equalTo: containView.leadingAnchor, constant: 10).isActive = true
-        containView.layer.cornerRadius = 5
+    }
+    
+    func playSound(){
+        let path = Bundle.main.path(forResource: test, ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOf: url)
+            soundPlayer?.play()
+            // đặt numberOfLoops = -1 để nó chạy lại khi chạy hết
+            soundPlayer?.numberOfLoops = -1
+        } catch {
+            print("lỗi")
+            // couldn't load file :(
+        }
     }
 }

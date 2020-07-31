@@ -30,7 +30,7 @@ class TutorialVC: UIViewController {
     @objc func showSignUP(){
         let secondVC = ThemeMain()
         let navigation = UINavigationController(rootViewController: secondVC)
-        
+        secondVC.isState = .update
         navigation.modalPresentationStyle = .fullScreen
         present(navigation, animated: true, completion: nil)
     }
@@ -44,7 +44,7 @@ class TutorialVC: UIViewController {
         title = "Hướng dẫn"
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
         cancelButton.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton
     }

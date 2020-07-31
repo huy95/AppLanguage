@@ -87,7 +87,7 @@ class AddRemindVC: UIViewController {
         } else {
             print("No")
         }
-        print(isCheck)
+       
     }
     var stackNotification : UIStackView = {
         let stackUnder = UIStackView()
@@ -281,11 +281,11 @@ class AddRemindVC: UIViewController {
         DBManger.shareInstance.addData(dayRemind)
         
         let quizMC = RemindVC()
-
+        
         quizMC.reloadInputViews()
         self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(quizMC, animated: true)
-      
+        
     }
     
     

@@ -33,27 +33,26 @@ class MainViewApp: UIViewController {
     }()
     @objc func nextTheme(){
         let themeMC = ThemeMain()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-        self.navigationItem.backBarButtonItem?.tintColor = .white
-
-
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem?.tintColor = .white
+        
+        
         navigationController?.pushViewController(themeMC, animated: true)
-
         // present - dissmiss + push - pop
     }
     var buttonRemind : CustomButton = {
         let buttonRemind = CustomButton()
         buttonRemind.setImage(UIImage(named: "timer"), for: .normal)
         buttonRemind.setTitle("Nhắc nhở hằng ngày", for: .normal)
- 
+        
         buttonRemind.addTarget(self, action: #selector(nextRemind), for: .touchUpInside)
         return buttonRemind
     }()
     @objc func nextRemind (){
         print("nextRemind")
         let ReMC = RemindVC()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-        self.navigationItem.backBarButtonItem?.tintColor = .white
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(ReMC, animated: true)
     }
     var buttonReview : CustomButton = {
@@ -68,8 +67,8 @@ class MainViewApp: UIViewController {
     @objc func nextReview(){
         print("ReviewVC")
         let ReMC = ReviewVC()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-        self.navigationItem.backBarButtonItem?.tintColor = .white
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(ReMC, animated: true)
     }
     var buttonTutorial : CustomButton = {
@@ -82,8 +81,8 @@ class MainViewApp: UIViewController {
     @objc func nextTutorial(){
         print("nextTutorial")
         let themeMC = TutorialVC()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-        self.navigationItem.backBarButtonItem?.tintColor = .white
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
+//        self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(themeMC, animated: true)
     }
     
@@ -113,19 +112,19 @@ class MainViewApp: UIViewController {
         stackViewMain.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
         
         stackViewMain.addArrangedSubview(buttonTheme)
-        buttonTheme.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.08).isActive = true
+        buttonTheme.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.1).isActive = true
         buttonTheme.layer.cornerRadius = 5
         
         stackViewMain.addArrangedSubview(buttonRemind)
-        buttonRemind.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.08).isActive = true
+        buttonRemind.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.1).isActive = true
         buttonRemind.layer.cornerRadius = 5
         
         stackViewMain.addArrangedSubview(buttonReview)
-        buttonReview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.08).isActive = true
+        buttonReview.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.1).isActive = true
         buttonReview.layer.cornerRadius = 5
         
         stackViewMain.addArrangedSubview(buttonTutorial)
-        buttonTutorial.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.08).isActive = true
+        buttonTutorial.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.1).isActive = true
         buttonTutorial.layer.cornerRadius = 5
         
     }

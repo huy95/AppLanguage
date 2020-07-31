@@ -117,6 +117,10 @@ class UpdateRemind: UIViewController {
         super.viewDidLoad()
         setupLayout()        // Do any additional setup after loading the
         setupNavi()
+        textView1.text = passedRemind?.text1
+        
+        
+        //        timeDatePicker
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
         

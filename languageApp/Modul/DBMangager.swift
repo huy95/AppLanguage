@@ -63,7 +63,7 @@ class DBManger {
 //        }
 //    }
     func updatePersonByID( id : String , object : DayRemind){
-//        object.IDRemind = id
+        object.IDRemind = id
         try! database.write {
             database.add(object, update: .modified)
         }

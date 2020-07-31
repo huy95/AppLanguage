@@ -103,7 +103,7 @@ class QuizQuestion: UIViewController {
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
         cancelButton.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton
         

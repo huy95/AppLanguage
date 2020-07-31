@@ -26,7 +26,7 @@ class RemindVC: UIViewController {
         setupLayout()
         tableView.reloadData()
         view.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 100)
-     
+        
     }
     func setupNavi(){
         title = "Nhắc nhở"
@@ -35,17 +35,18 @@ class RemindVC: UIViewController {
         navigationItem.rightBarButtonItem = addRemind
         self.navigationItem.setHidesBackButton(true, animated:true)
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
+        //        let cancelButton = UIBarButtonItem(barButtonSystemItem: UIImage(named: "book"), target: self, action: #selector(cancelPress))
         cancelButton.tintColor = .white
         navigationItem.leftBarButtonItem = cancelButton
     }
     @objc func cancelPress(){
         let secondVC = MainViewApp()
         let navigation = UINavigationController(rootViewController: secondVC)
-
+        
         navigation.modalPresentationStyle = .fullScreen
         present(navigation, animated: true, completion: nil)
-//        navigationController?.popViewController(animated: true)
+        //        navigationController?.popViewController(animated: true)
     }
     @objc func goAdd(){
         let addRe = AddRemindVC()
@@ -65,7 +66,7 @@ class RemindVC: UIViewController {
         fetchData()
         
     }
-
+    
     func fetchData() {
         if let fetchedPhotos = DBManger.shareInstance.getAllData() {
             datas = fetchedPhotos
@@ -100,7 +101,7 @@ extension RemindVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             DispatchQueue.main.async {
-
+                
                 let item = self.datas?[indexPath.row]
                 DBManger.shareInstance.deleteItem(item!)
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
@@ -109,7 +110,7 @@ extension RemindVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let quizMC = UpdateRemind()
-
+        quizMC.passedRemind = datas?[indexPath.row]
         quizMC.reloadInputViews()
         self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(quizMC, animated: true)

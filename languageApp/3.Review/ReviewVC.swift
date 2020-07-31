@@ -23,7 +23,7 @@ class ReviewVC: UIViewController {
         datas = fakeDatas()
         super.viewDidLoad()
         setupNavi()
-        setupLayput()
+        setupLayout()
         
         // Do any additional setup after loading the view.
     }
@@ -31,24 +31,26 @@ class ReviewVC: UIViewController {
         view.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
         title = "Chủ đề"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = UIColor.init(red: 0, green: 95/255, blue: 208/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor.colorNavigation()
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
+//        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
         
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(cancelPress))
+        let cancelButton = UIBarButtonItem(image: UIImage(named: "left"), style: .plain, target: self, action: #selector(cancelPress))
+        cancelButton.tintColor = UIColor.white
         navigationItem.leftBarButtonItem = cancelButton
     }
     @objc func cancelPress(){
 //                dismiss(animated: true, completion: nil)
-//        let secondVC = MainViewApp()
-//        let navigation = UINavigationController(rootViewController: secondVC)
-//
-//        navigation.modalPresentationStyle = .fullScreen
-//        present(navigation, animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        let secondVC = MainViewApp()
+        let navigation = UINavigationController(rootViewController: secondVC)
+
+        navigation.modalPresentationStyle = .fullScreen
+        present(navigation, animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
         
     }
-    func setupLayput(){
+    func setupLayout(){
         view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
@@ -73,9 +75,11 @@ extension ReviewVC: UITableViewDelegate, UITableViewDataSource {
             guard let strongSelf = self else { return }
 
             strongSelf.datas[indexPath.row].isCheckTheme = !strongSelf.datas[indexPath.row].isCheckTheme
+            self?.datas[indexPath.row].isCheckTheme = strongSelf.datas[indexPath.row].isCheckTheme
             tableView.reloadData()
         }
-        
+//        datas[indexPath.row].isCheckTheme = (cell.passAction != nil)
+
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
