@@ -33,7 +33,7 @@ class ResultViewController: UIViewController {
         let label = UIButton()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(red: 0.75, green:0.25, blue:0.65, alpha:1.0)
-        label.setTitle("Làm lại", for: .normal)
+        label.setTitle("Nhóm từ khác", for: .normal)
         return label
     }()
     let buttonRemind: UIButton = {
@@ -98,34 +98,21 @@ class ResultViewController: UIViewController {
     }
     @objc func returnRemind(){
         let secondVC = DetailTheme()
-        let navigation = UINavigationController(rootViewController: secondVC)
         secondVC.dataDetailTheme = dataReturn
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+        navigationController?.navigationBar.barTintColor = UIColor.colorButtonMain()
+        navigationController?.pushViewController(secondVC, animated: true)
     }
     @objc func setup(){
-        let secondVC = QuizQuestion()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        secondVC.dataQiz = dataReturn
-        navigation.modalPresentationStyle = .fullScreen
-        
-        present(navigation, animated: true, completion: nil)
+        let secondVC = ThemeMain()
+//        let navigation = UINavigationController(rootViewController: secondVC)
+//        secondVC.dataQiz = dataReturn
+        navigationController?.navigationBar.barTintColor = UIColor.colorButtonMain()
+        navigationController?.pushViewController(secondVC, animated: true)
     }
-    @objc func returnMain(){
-        let secondVC = MainViewApp()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        dataReturn = nil
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+    let navigationBarAppearance = UINavigationBar.appearance()
+    @objc func returnMain(){        
+        navigationController?.navigationBar.barTintColor = UIColor.colorNavigation()
+        self.navigationController?.popToRootViewController(animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor.colorNavigation()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // set cho navigationBar trong suốt để thấy ảnh ở background (cần đủ 3 dòng)
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.isTranslucent = true
-    }
-    
 }

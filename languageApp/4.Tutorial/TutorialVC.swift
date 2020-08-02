@@ -44,10 +44,11 @@ class TutorialVC: UIViewController {
     }()
     @objc func showSignUP(){
         let secondVC = ThemeMain()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        secondVC.isState = .update
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+//        let navigation = UINavigationController(rootViewController: secondVC)
+    
+//        navigation.modalPresentationStyle = .fullScreen
+//        present(navigation, animated: true, completion: nil)
+        navigationController?.pushViewController(secondVC, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

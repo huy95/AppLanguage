@@ -175,11 +175,9 @@ class UpdateRemind: UIViewController {
         dayRemind.time1 = test
         dayRemind.text1 = textView1.text
         DBManger.shareInstance.updatePersonByID(id: "updatePersonByID", object: dayRemind)
-        
-        let quizMC = RemindVC()
-        
-        quizMC.reloadInputViews()
-        self.navigationItem.backBarButtonItem?.tintColor = .white
-        navigationController?.pushViewController(quizMC, animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    deinit {
+        print("outside")
     }
 }

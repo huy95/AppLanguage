@@ -4,13 +4,13 @@
 //
 //  Created by Huy on 7/9/20.
 //  Copyright © 2020 Huy. All rights reserved.
-//
+// ban chính
 
 import UIKit
-enum State {
-    case create
-    case update
-}
+//enum State {
+//    case create
+//    case update
+//}
 class ThemeMain: UIViewController {
     var colectionTheme: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -22,13 +22,12 @@ class ThemeMain: UIViewController {
         return colectionTheme
     }()
     var datas : [Theme] = []
-    var isState: State = .create
+//    var isState: State = .create
     override func viewDidLoad() {
         datas = fakeDatas()
         super.viewDidLoad()
         setupNavi()
         setupLayput()
-        //        isState = .create
     }
     func setupNavi(){
         view.backgroundColor = UIColor.colorBackground()
@@ -47,19 +46,19 @@ class ThemeMain: UIViewController {
     }
     @objc func cancelPress(){
         
-        let secondVC = MainViewApp()
-        let navigation = UINavigationController(rootViewController: secondVC)
         
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
-        //        dismiss(animated: true, completion: nil)
-        //        if isState == .create{
-        //            navigationController?.popViewController(animated: true)
-        //        } else {
-        ////            dismiss(animated: true, completion: nil)
-        //            dismiss(animated: true) {            self.navigationController?.popToRootViewController(animated: true)
-        //            }
-        //        }
+//        let navigation = UINavigationController(rootViewController: secondVC)
+//
+//        navigation.modalPresentationStyle = .fullScreen
+//        present(navigation, animated: true, completion: nil)
+//        self.navigationController?.popToRootViewController(animated: true)
+        for vc in navigationController!.viewControllers{
+            if let secondVC = vc as? MainViewApp {
+                let vc = MainViewApp()
+                navigationController?.popToViewController(secondVC, animated: true)
+            }
+        }
+
     }
     
     func setupLayput(){
@@ -74,6 +73,7 @@ class ThemeMain: UIViewController {
     deinit {
         print("out side")
     }
+   
 }
 extension ThemeMain: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,15 +92,15 @@ extension ThemeMain: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = ((collectionView.frame.size.width - 20) / 2)
+        let size = ((collectionView.frame.size.width - 10) / 2)
         return CGSize(width: size, height: size)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -12,7 +12,7 @@ import RealmSwift
 class DBManger {
     private var database : Realm!
     static let shareInstance = DBManger()
-   
+    
     private init(){
         // khoi tao realm
         database = try! Realm()
@@ -28,11 +28,6 @@ class DBManger {
         let results = database.objects(DayRemind.self)
         return results
     }
-//    func getclickClosure() -> Results<DayRemind>? {
-//        let results = database.objects(DayRemind.clickClosure)
-//        return results
-//    }
-    
     func deleteItem(_ item: DayRemind){
         do {
             try database.write{
@@ -47,27 +42,32 @@ class DBManger {
             database.deleteAll()
         }
     }
-//    func updateData(_ dataUpdate: DayRemind) {
-//        let updateData = DayRemind()
-//        updateData.IDRemind = dataUpdate.IDRemind
-//        updateData.isCheck = dataUpdate.isCheck
-//        updateData.time1 = dataUpdate.time1
-//        updateData.text1 = dataUpdate.text1
-//        
-//        do {
-//            try database.write {
-//                database.add(updateData)
-//            }
-//        } catch {
-//            print("Error Updating Photos: \(error.localizedDescription)")
-//        }
-//    }
     func updatePersonByID( id : String , object : DayRemind){
         object.IDRemind = id
         try! database.write {
             database.add(object, update: .modified)
         }
     }
-
-
 }
+//class DBMangerb {
+//    private var database : Realm!
+//    static let shareInstance = DBMangerb()
+//
+//    private init(){
+//        // khoi tao realm
+//        database = try! Realm()
+//        // hien thi duong dan
+//        print(database.configuration.fileURL!)
+//    }
+//
+//    func getAllData() -> Results<ChechStar>? {
+//        let results = database.objects(ChechStar.self)
+//        return results
+//    }
+//    func updatePersonByID( id : String , object : DayRemind){
+//        object.IDRemind = id
+//        try! database.write {
+//            database.add(object, update: .modified)
+//        }
+//    }
+//}

@@ -91,6 +91,12 @@ class QuizReview: UIViewController {
         runTimer()
         viewTest()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        setupNavi()
+        getQuestion(currentIndexQuestion)
+        totalQuestion = data.count
+        configTableView()
+    }
     func viewTest() {
         view1.frame = CGRect(x: 0, y: 200, width: 500, height: 500)
         view1.backgroundColor = .none
@@ -105,8 +111,8 @@ class QuizReview: UIViewController {
     @objc func runLoop(){
         numberSecond += 1
         submitButton.text = "\(numberSecond)"
-         if numberSecond >= 4 {
-        nextAnswer()
+        if numberSecond >= 4 {
+            nextAnswer()
         }
     }
     func resetTimer(){
@@ -118,50 +124,51 @@ class QuizReview: UIViewController {
         soundPlayer?.pause()
         timer.invalidate()
         if numberSecond == 0 {
-           submitButton.text = ""
+            submitButton.text = ""
         } else {
             submitButton.text = "\(numberSecond)"
         }
     }
     
     func nextAnswer(){
-                self.resetTimer()
-                if self.currentIndexQuestion < self.totalQuestion - 1 {
-                    DispatchQueue.main.async {
-                        self.currentIndexQuestion += 1
-                        self.getQuestion(self.currentIndexQuestion)
-                        self.submitButton.text = ""
-                        self.tableView.reloadData()
-                        self.runTimer()
-                        self.view1.isHidden = true
-                    }
-                }
-                else if self.currentIndexQuestion == self.totalQuestion - 1{
-                    var point: Int = 0
-                    for item in self.data{
-                        for (index, i) in item.answers.enumerated(){
-                            if i.isSelected == true && index + 1 == item.indexRightAnswer{
-                                point += 1
-                                
-                                print(i.isSelected)
-                                i.isSelected = false
-                            }
-                        }
-                    }
-                    
-                    
-                    let resultVC = ResultReviewVC()
-                    resultVC.totalQuestion = self.totalQuestion
-                    resultVC.numberCorrect = point
-                    resultVC.dataReturn = self.dataQiz
-                    
-                    let navigation = UINavigationController(rootViewController: resultVC)
-                    
-                    navigation.modalPresentationStyle = .fullScreen
-                    self.present(navigation, animated: true, completion: nil)
-                
+        self.resetTimer()
+        if self.currentIndexQuestion < self.totalQuestion - 1 {
+            DispatchQueue.main.async {
+                self.currentIndexQuestion += 1
+                self.getQuestion(self.currentIndexQuestion)
+                self.submitButton.text = ""
+                self.tableView.reloadData()
+                self.runTimer()
+                self.view1.isHidden = true
             }
         }
+        else if self.currentIndexQuestion == self.totalQuestion - 1{
+            var point: Int = 0
+            for item in self.data{
+                for (index, i) in item.answers.enumerated(){
+                    if i.isSelected == true && index + 1 == item.indexRightAnswer{
+                        point += 1
+                        
+                        print(i.isSelected)
+                        i.isSelected = false
+                    }
+                }
+            }
+            
+            
+            let resultVC = ResultReviewVC()
+            resultVC.totalQuestion = self.totalQuestion
+            resultVC.numberCorrect = point
+            resultVC.dataReturn = self.dataQiz
+            
+//            let navigation = UINavigationController(rootViewController: resultVC)
+//
+//            navigation.modalPresentationStyle = .fullScreen
+//            self.present(navigation, animated: true, completion: nil)
+            navigationController?.pushViewController(resultVC, animated: true)
+            
+        }
+    }
     func setupNavi(){
         view.backgroundColor = .white
         title = "Play Game"
@@ -176,13 +183,18 @@ class QuizReview: UIViewController {
         navigationItem.leftBarButtonItem = cancelButton
     }
     @objc func cancelPress(){
-        //        dismiss(animated: true, completion: nil)
-//        let secondVC = ReviewVC()
-//        let navigation = UINavigationController(rootViewController: secondVC)
-//
-//        navigation.modalPresentationStyle = .fullScreen
-//        present(navigation, animated: true, completion: nil)
+        //        let secondVC = ReviewVC()
+        //        let navigation = UINavigationController(rootViewController: secondVC)
+        //
+        //        navigation.modalPresentationStyle = .fullScreen
+        //        present(navigation, animated: true, completion: nil)
         navigationController?.popViewController(animated: true)
+        for vc in navigationController!.viewControllers{
+                    if let vc = vc as? ReviewVC {
+        //                let vc = MainViewApp()
+                        navigationController?.popToViewController(vc, animated: true)
+                    }
+                }
         resetTimer()
     }
     func getQuestion(_ current: Int){
@@ -224,7 +236,7 @@ class QuizReview: UIViewController {
     func playSound(){
         let path = Bundle.main.path(forResource: "music.mp3", ofType:nil)!
         let url = URL(fileURLWithPath: path)
-
+        
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: url)
             soundPlayer?.play()
@@ -272,41 +284,41 @@ extension QuizReview: UITableViewDelegate, UITableViewDataSource{
             sleep(UInt32(1))
             // kiểm tra câu hỏi hiện tại, nếu lớn hơn tổng số câu
             /*DispatchQueue.main.async {
-                self.resetTimer()
-                if self.currentIndexQuestion < self.totalQuestion - 1 {
-                    DispatchQueue.main.async {
-                        self.runTimer()
-                        self.currentIndexQuestion += 1
-                        self.getQuestion(self.currentIndexQuestion)
-                        self.submitButton.text = ""
-                        tableView.reloadData()
-                    }
-                }
-                else if self.currentIndexQuestion == self.totalQuestion - 1{
-                    var point: Int = 0
-                    for item in self.data{
-                        for (index, i) in item.answers.enumerated(){
-                            if i.isSelected == true && index + 1 == item.indexRightAnswer{
-                                point += 1
-                                
-                                print(i.isSelected)
-                                i.isSelected = false
-                            }
-                        }
-                    }
-                    
-                    
-                    let resultVC = ResultReviewVC()
-                    resultVC.totalQuestion = self.totalQuestion
-                    resultVC.numberCorrect = point
-                    resultVC.dataReturn = self.dataQiz
-                    
-                    let navigation = UINavigationController(rootViewController: resultVC)
-                    
-                    navigation.modalPresentationStyle = .fullScreen
-                    self.present(navigation, animated: true, completion: nil)
-                }
-            }*/
+             self.resetTimer()
+             if self.currentIndexQuestion < self.totalQuestion - 1 {
+             DispatchQueue.main.async {
+             self.runTimer()
+             self.currentIndexQuestion += 1
+             self.getQuestion(self.currentIndexQuestion)
+             self.submitButton.text = ""
+             tableView.reloadData()
+             }
+             }
+             else if self.currentIndexQuestion == self.totalQuestion - 1{
+             var point: Int = 0
+             for item in self.data{
+             for (index, i) in item.answers.enumerated(){
+             if i.isSelected == true && index + 1 == item.indexRightAnswer{
+             point += 1
+             
+             print(i.isSelected)
+             i.isSelected = false
+             }
+             }
+             }
+             
+             
+             let resultVC = ResultReviewVC()
+             resultVC.totalQuestion = self.totalQuestion
+             resultVC.numberCorrect = point
+             resultVC.dataReturn = self.dataQiz
+             
+             let navigation = UINavigationController(rootViewController: resultVC)
+             
+             navigation.modalPresentationStyle = .fullScreen
+             self.present(navigation, animated: true, completion: nil)
+             }
+             }*/
             DispatchQueue.main.async {
                 self.nextAnswer()
             }

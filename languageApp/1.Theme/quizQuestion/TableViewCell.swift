@@ -19,8 +19,6 @@ class TableViewCell: UITableViewCell {
         didSet{
             if let answerTable = answerTable {
                 answerLabel.text = answerTable.answer
-//                selectButton.image = answerTable.isSelected ? UIImage(named: "ic_checked"): UIImage(named: "ic_uncheck")
-//                checkMark
                 selectButton.image = answerTable.isSelected ? UIImage(named: "checkBox"): UIImage(named: "unCheckBox")
             
             }

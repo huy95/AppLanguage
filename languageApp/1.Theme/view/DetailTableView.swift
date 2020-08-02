@@ -147,8 +147,8 @@ class DetailTableView: UITableViewCell {
         
     
         containView.addSubview(stackView1)
-        stackView1.topAnchor.constraint(equalTo: containView.topAnchor, constant: 5).isActive = true
-        stackView1.bottomAnchor.constraint(equalTo: containView.bottomAnchor, constant: -2).isActive = true
+        stackView1.topAnchor.constraint(equalTo: containView.topAnchor, constant: 10).isActive = true
+        stackView1.bottomAnchor.constraint(equalTo: containView.bottomAnchor, constant: -10).isActive = true
         stackView1.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 80).isActive = true
         stackView1.rightAnchor.constraint(equalTo: buttonAudio.leftAnchor, constant: -5).isActive = true
 //

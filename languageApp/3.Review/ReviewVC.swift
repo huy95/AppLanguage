@@ -14,6 +14,7 @@ class ReviewVC: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
         tableView.register(UINib(nibName: "TableReviewCellVC", bundle: nil), forCellReuseIdentifier: "ReviewCell")
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -41,12 +42,18 @@ class ReviewVC: UIViewController {
         navigationItem.leftBarButtonItem = cancelButton
     }
     @objc func cancelPress(){
-//                dismiss(animated: true, completion: nil)
-        let secondVC = MainViewApp()
-        let navigation = UINavigationController(rootViewController: secondVC)
-
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+//        for vc in navigationController!.viewControllers{
+//            if let vc = vc as? MainViewApp {
+////                let vc = MainViewApp()
+//                navigationController?.popToViewController(vc, animated: true)
+//            }
+//        }
+        navigationController?.popToRootViewController(animated: true)
+//        let secondVC = MainViewApp()
+//        let navigation = UINavigationController(rootViewController: secondVC)
+//
+//        navigation.modalPresentationStyle = .fullScreen
+//        present(navigation, animated: true, completion: nil)
 //        navigationController?.popViewController(animated: true)
         
     }
@@ -59,7 +66,9 @@ class ReviewVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+    deinit {
+        print("outside")
+    }
 }
 
 extension ReviewVC: UITableViewDelegate, UITableViewDataSource {
@@ -75,10 +84,9 @@ extension ReviewVC: UITableViewDelegate, UITableViewDataSource {
             guard let strongSelf = self else { return }
 
             strongSelf.datas[indexPath.row].isCheckTheme = !strongSelf.datas[indexPath.row].isCheckTheme
-            self?.datas[indexPath.row].isCheckTheme = strongSelf.datas[indexPath.row].isCheckTheme
+            
             tableView.reloadData()
         }
-//        datas[indexPath.row].isCheckTheme = (cell.passAction != nil)
 
         return cell
     }
@@ -92,13 +100,9 @@ extension ReviewVC: UITableViewDelegate, UITableViewDataSource {
         quizMC.dataQiz = datas[indexPath.row]
         self.navigationItem.backBarButtonItem?.tintColor = .white
         navigationController?.pushViewController(quizMC, animated: true)
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
-    
-    
 }
 

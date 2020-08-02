@@ -28,11 +28,11 @@ class ResultReviewVC: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    let buttonScrenn: UIButton = {
+    let buttonScreen: UIButton = {
         let label = UIButton()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = UIColor(red: 0.75, green:0.25, blue:0.65, alpha:1.0)
-        label.setTitle("Làm lại", for: .normal)
+        label.setTitle("Học lại từ", for: .normal)
         return label
     }()
     let buttonNew: UIButton = {
@@ -59,6 +59,7 @@ class ResultReviewVC: UIViewController {
         SỐ CÂU ĐÚNG
         \(numberCorrect!)/\(totalQuestion!)
         """
+        self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
     func setupLayout(){
@@ -72,13 +73,13 @@ class ResultReviewVC: UIViewController {
         resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
         
-        view.addSubview(buttonScrenn)
-        buttonScrenn.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 50).isActive = true
-        buttonScrenn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        buttonScrenn.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2 - 50).isActive = true
-        buttonScrenn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        buttonScrenn.addTarget(self, action: #selector(viewQiz), for: .touchUpInside)
-        buttonScrenn.layer.cornerRadius = 5
+        view.addSubview(buttonScreen)
+        buttonScreen.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 50).isActive = true
+        buttonScreen.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        buttonScreen.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2 - 50).isActive = true
+        buttonScreen.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        buttonScreen.addTarget(self, action: #selector(viewQiz), for: .touchUpInside)
+        buttonScreen.layer.cornerRadius = 5
         view.addSubview(buttonNew)
         buttonNew.topAnchor.constraint(equalTo: resultLabel.bottomAnchor, constant: 50).isActive = true
         buttonNew.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2 - 40).isActive = true
@@ -96,40 +97,32 @@ class ResultReviewVC: UIViewController {
         buttonReturnMain.addTarget(self, action: #selector(returnMain), for: .touchUpInside)
     }
     @objc func returnNew(){
-        let secondVC = ReviewVC()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        dataReturn = nil
-        navigation.modalPresentationStyle = .fullScreen
+        for vc in navigationController!.viewControllers{
+            if let vc = vc as? ReviewVC {
+//                let vc = MainViewApp()
+                navigationController?.popToViewController(vc, animated: true)
+            }
+        }
         
-        present(navigation, animated: true, completion: nil)
     }
     @objc func viewQiz(){
-        let secondVC = QuizReview()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        secondVC.dataQiz = dataReturn
-        navigation.modalPresentationStyle = .fullScreen
-        
-        present(navigation, animated: true, completion: nil)
+        navigationController?.pushViewController(ThemeMain(), animated: true)
     }
     @objc func returnMain(){
-        let secondVC = MainViewApp()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        dataReturn = nil
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     deinit {
         print("test")
     }
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           
-           // set cho navigationBar trong suốt để thấy ảnh ở background (cần đủ 3 dòng)
-           self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-           self.navigationController!.navigationBar.shadowImage = UIImage()
-           self.navigationController!.navigationBar.isTranslucent = true
-       }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //           super.viewWillAppear(animated)
+    //
+    //           // set cho navigationBar trong suốt để thấy ảnh ở background (cần đủ 3 dòng)
+    //           self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    //           self.navigationController!.navigationBar.shadowImage = UIImage()
+    //           self.navigationController!.navigationBar.isTranslucent = true
+    //       }
 }
 
 

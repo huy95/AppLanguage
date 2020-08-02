@@ -5,10 +5,11 @@
 //  Created by Huy on 7/9/20.
 //  Copyright © 2020 Huy. All rights reserved.
 //
-
+// ban chính
 import UIKit
 
 class MainViewApp: UIViewController {
+    var vc = UIViewController.self
     var viewtop : UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,9 +34,6 @@ class MainViewApp: UIViewController {
     }()
     @objc func nextTheme(){
         let themeMC = ThemeMain()
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-//        self.navigationItem.backBarButtonItem?.tintColor = .white
-        
         
         navigationController?.pushViewController(themeMC, animated: true)
         // present - dissmiss + push - pop
@@ -51,8 +49,7 @@ class MainViewApp: UIViewController {
     @objc func nextRemind (){
         print("nextRemind")
         let ReMC = RemindVC()
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-//        self.navigationItem.backBarButtonItem?.tintColor = .white
+
         navigationController?.pushViewController(ReMC, animated: true)
     }
     var buttonReview : CustomButton = {
@@ -67,8 +64,7 @@ class MainViewApp: UIViewController {
     @objc func nextReview(){
         print("ReviewVC")
         let ReMC = ReviewVC()
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-//        self.navigationItem.backBarButtonItem?.tintColor = .white
+
         navigationController?.pushViewController(ReMC, animated: true)
     }
     var buttonTutorial : CustomButton = {
@@ -81,8 +77,7 @@ class MainViewApp: UIViewController {
     @objc func nextTutorial(){
         print("nextTutorial")
         let themeMC = TutorialVC()
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .done, target: self, action: nil)
-//        self.navigationItem.backBarButtonItem?.tintColor = .white
+
         navigationController?.pushViewController(themeMC, animated: true)
     }
     
@@ -90,14 +85,22 @@ class MainViewApp: UIViewController {
         super.viewDidLoad()
         setupNavigation()
         setupLayout()
+
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        setupNavigation()
+       
+    }
+    
+    
     func setupNavigation(){
         title = "EngSmart - Học tiếng anh"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.colorNavigation()
         view.backgroundColor = UIColor.colorBackground()
     }
+    let navigationBarAppearance = UINavigationBar.appearance()
     func setupLayout(){
         view.addSubview(viewtop)
         viewtop.topAnchor.constraint(equalTo: view.topAnchor, constant: UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height)!).isActive = true

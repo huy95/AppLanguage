@@ -28,6 +28,9 @@ class RemindVC: UIViewController {
         view.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 100)
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     func setupNavi(){
         title = "Nhắc nhở"
         let addRemind = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goAdd))
@@ -41,12 +44,7 @@ class RemindVC: UIViewController {
         navigationItem.leftBarButtonItem = cancelButton
     }
     @objc func cancelPress(){
-        let secondVC = MainViewApp()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
-        //        navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @objc func goAdd(){
         let addRe = AddRemindVC()

@@ -39,10 +39,31 @@ class QuizQuestion: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .red
-        button.setTitle("Kết quả", for: .normal)
-        button.addTarget(self, action: #selector(submitResult), for: .touchUpInside)
+        button.setTitle("Kiểm tra", for: .normal)
+        button.addTarget(self, action: #selector(printResult), for: .touchUpInside)
         button.layer.cornerRadius = 5
         
+        return button
+    }()
+
+    let buttonLeft: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.colorNavigation()
+        button.setImage(UIImage(named: "buttonLeft"), for: .normal)
+        button.addTarget(self, action: #selector(swipeRight), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        
+        return button
+    }()
+    let buttonRight: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.colorNavigation()
+        //        button.setTitle("Kết quả", for: .normal)
+        button.setImage(UIImage(named: "buttonRight"), for: .normal)
+        button.addTarget(self, action: #selector(swipeLeft), for: .touchUpInside)
+        button.layer.cornerRadius = 5
         return button
     }()
     let labelAnswer: UILabel = {
@@ -54,6 +75,24 @@ class QuizQuestion: UIViewController {
         label.textAlignment = .center
         label.textColor = UIColor.colorNavigation()
         return label
+    }()
+    var stackViewButton : UIStackView = {
+        let a = UIStackView()
+        a.translatesAutoresizingMaskIntoConstraints = false
+        a.axis = .horizontal // doc
+        a.alignment = .fill
+        a.distribution = .equalSpacing
+        return a
+    }()
+    let buttonEnd: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.colorNavigation()
+        button.setTitle("Kết quả", for: .normal)
+        
+        button.addTarget(self, action: #selector(submitResult), for: .touchUpInside)
+        button.layer.cornerRadius = 5
+        return button
     }()
     var dataQiz: Theme?
     // bộ câu hỏi
@@ -77,12 +116,10 @@ class QuizQuestion: UIViewController {
         totalQuestion = datas.count
         configTableView()
         setupLayout()
-        
+        buttonEnd.isHidden = true
         getQuestion(currentIndexQuestion)
-        gesture()
-        if totalQuestion > 1{
-            submitButton.isHidden = true
-        }
+        //        gesture()
+        
         // reset
         for item in self.datas{
             print("check for")
@@ -109,13 +146,7 @@ class QuizQuestion: UIViewController {
         
     }
     @objc func cancelPress(){
-        
-        let secondVC = DetailTheme()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
-        
-        secondVC.dataDetailTheme = dataQiz
+        navigationController?.popViewController(animated: true)
     }
     func getQuestion(_ current: Int){
         questionLabel.text = "\(currentIndexQuestion + 1). \(datas[current].question)"
@@ -146,13 +177,27 @@ class QuizQuestion: UIViewController {
         labelAnswer.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
         labelAnswer.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: 0).isActive = true
         labelAnswer.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    
         
-        view.addSubview(submitButton)
-        submitButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
-        submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
-        submitButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        submitButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/2).isActive = true
+        
+        view.addSubview(stackViewButton)
+        stackViewButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
+        stackViewButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        stackViewButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        stackViewButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
+        
+        stackViewButton.addArrangedSubview(buttonLeft)
+        buttonLeft.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/5).isActive = true
+        stackViewButton.addArrangedSubview(submitButton)
+        submitButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.8/5).isActive = true
+        
+        stackViewButton.addArrangedSubview(buttonRight)
+        buttonRight.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/5).isActive = true
+        
+        view.addSubview(buttonEnd)
+        buttonEnd.bottomAnchor.constraint(equalTo: stackViewButton.topAnchor, constant: -10).isActive = true
+        buttonEnd.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 30).isActive = true
+        buttonEnd.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -30).isActive = true
+        buttonEnd.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         tableView.topAnchor.constraint(equalTo: labelAnswer.bottomAnchor, constant: 0).isActive = true
         tableView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 0).isActive = true
@@ -160,27 +205,18 @@ class QuizQuestion: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -20).isActive = true
     }
     
-    func gesture(){
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
-        leftSwipe.direction = .left
-        view.addGestureRecognizer(leftSwipe)
-        
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeRight))
-        rightSwipe.direction = .right
-        view.addGestureRecognizer(rightSwipe)
-    }
     
     @objc func swipeLeft(){
         if currentIndexQuestion != totalQuestion - 1 {
             nextAnswer()
-          labelAnswer.text = "Hãy chọn đáp án"
+            labelAnswer.text = "Hãy chọn đáp án"
         }
     }
     
     @objc func swipeRight(){
         if currentIndexQuestion > 0 {
             previousAnswer()
-           labelAnswer.text = "Hãy chọn đáp án"
+            labelAnswer.text = "Hãy chọn đáp án"
         }
     }
     func previousAnswer(){
@@ -189,7 +225,7 @@ class QuizQuestion: UIViewController {
         
         if currentIndexQuestion <= 0 {
             currentIndexQuestion = 0
-            labelAnswer.isHidden = true
+            //            labelAnswer.isHidden = true
         }
         getQuestion(currentIndexQuestion)
         tableView.reloadData()
@@ -201,27 +237,42 @@ class QuizQuestion: UIViewController {
         // kiểm tra câu hỏi hiện tại, nếu lớn hơn tổng số câu
         if currentIndexQuestion == totalQuestion - 1 {
             currentIndexQuestion = totalQuestion - 1
-          submitButton.isHidden = false
+            
+            buttonEnd.isHidden = false
         }
         getQuestion(currentIndexQuestion)
         tableView.reloadData()
     }
+    @objc func printResult(){
+        labelAnswer.isHidden = false
+    }
     @objc func submitResult(){
-        var point: Int = 0
-        for item in datas{
-            for (index, i) in item.answers.enumerated(){
-                if i.isSelected == true && index + 1 == item.indexRightAnswer{
-                    point += 1
+            var point: Int = 0
+            for item in datas{
+                for (index, i) in item.answers.enumerated(){
+                    if i.isSelected == true && index + 1 == item.indexRightAnswer{
+                        point += 1
+                        i.isSelected = false
+                    }
+                }
+            }
+            let resultVC = ResultViewController()
+            resultVC.totalQuestion = totalQuestion
+            resultVC.numberCorrect = point
+            resultVC.dataReturn = dataQiz
+            navigationController?.navigationBar.barTintColor = UIColor.colorButtonMain()
+            self.navigationItem.setHidesBackButton(true, animated:true)
+            navigationController?.pushViewController(resultVC, animated: true)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        for item in self.datas{
+            print("check for")
+            for (_, i) in item.answers.enumerated(){
+                if i.isSelected == true {
                     i.isSelected = false
                 }
             }
         }
-        let resultVC = ResultViewController()
-        resultVC.totalQuestion = totalQuestion
-        resultVC.numberCorrect = point
-        resultVC.dataReturn = dataQiz
-        self.navigationItem.setHidesBackButton(true, animated:true)
-        navigationController?.pushViewController(resultVC, animated: true)
     }
     
 }
@@ -245,17 +296,17 @@ extension QuizQuestion: UITableViewDelegate, UITableViewDataSource{
         for item in currentQuestion.answers{
             item.isSelected = false
         }
-
+        
         currentQuestion.answers[indexPath.row].isSelected = true
         print(currentQuestion.answers[indexPath.row].answer)
-        labelAnswer.isHidden = false
+        labelAnswer.isHidden = true
         if datas[currentIndexQuestion].answers[indexAnswer].answer == currentQuestion.answers[indexPath.row].answer {
             labelAnswer.text = """
             Đúng rồi! Đáp án đúng là
             \(datas[currentIndexQuestion].answers[indexAnswer].answer)
             """
         } else {
-           labelAnswer.text = """
+            labelAnswer.text = """
             Sai rồi! Đáp án đúng là
             \(datas[currentIndexQuestion].answers[indexAnswer].answer)
             """

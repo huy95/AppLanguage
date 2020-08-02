@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailTheme: UIViewController {
+    
     var dataDetailTheme : Theme? = nil
     var dataTheme : [DetailThemefake] {
         return dataDetailTheme?.clickColect ?? [DetailThemefake]()
@@ -19,6 +20,7 @@ class DetailTheme: UIViewController {
         tableView1.register(DetailTableView.self, forCellReuseIdentifier: "cell1")
         tableView1.showsVerticalScrollIndicator = false
         tableView1.backgroundColor = UIColor.colorBackground()
+        tableView1.separatorStyle = .none
         return tableView1
     }()
     var buttonnextQuiz : UIButton = {
@@ -49,7 +51,7 @@ class DetailTheme: UIViewController {
     func setupNavi(){
         view.backgroundColor = UIColor.init(red: 216/255, green: 216/255, blue: 216/255, alpha: 100)
         title = dataDetailTheme?.title
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.barTintColor = UIColor.colorButtonMain()
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
@@ -60,10 +62,7 @@ class DetailTheme: UIViewController {
     }
     @objc func cancelPress(){
         let secondVC = ThemeMain()
-        let navigation = UINavigationController(rootViewController: secondVC)
-        
-        navigation.modalPresentationStyle = .fullScreen
-        present(navigation, animated: true, completion: nil)
+        self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
     func setupLayout(){

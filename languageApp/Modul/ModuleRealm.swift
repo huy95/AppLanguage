@@ -20,3 +20,10 @@ class DayRemind: Object{
         return "IDRemind"
     }
 }
+class ChechStar: Object{
+    @objc dynamic var ID = UUID().uuidString
+    @objc dynamic var isCheckReview : Bool = false
+    override static func primaryKey() -> String? {
+        return "ID"
+    }
+}

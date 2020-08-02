@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AddRemindVC: UIViewController {
+class AddRemindVC: UIViewController, UITextViewDelegate{
     var timeDatePicker : UIDatePicker = {
         let timeDatePicker = UIDatePicker()
         timeDatePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ class AddRemindVC: UIViewController {
         } else {
             print("No")
         }
-       
+        
     }
     var stackNotification : UIStackView = {
         let stackUnder = UIStackView()
@@ -190,6 +190,7 @@ class AddRemindVC: UIViewController {
         //        isCheck = true
         // an nut back
         self.navigationItem.setHidesBackButton(true, animated:true)
+        //         = self
         
     }
     func setupNavi(){
@@ -265,9 +266,6 @@ class AddRemindVC: UIViewController {
         stackUnder.addArrangedSubview(buttonFinish)
         buttonCancel.layer.cornerRadius = 5
         buttonFinish.layer.cornerRadius = 5
-        
-        
-        
     }
     @objc func remindFinish(){
         
@@ -280,13 +278,31 @@ class AddRemindVC: UIViewController {
         dayRemind.text1 = textView1.text
         DBManger.shareInstance.addData(dayRemind)
         
-        let quizMC = RemindVC()
-        
-        quizMC.reloadInputViews()
-        self.navigationItem.backBarButtonItem?.tintColor = .white
-        navigationController?.pushViewController(quizMC, animated: true)
-        
+        navigationController?.popViewController(animated: true)
     }
-    
-    
+    deinit {
+        print("outside")
+    }
+    func textViewDidChangeSelection(_ textView: UITextView) {
+//        view.resignFirstResponder()
+        print("2")
+    }
+    func textViewDidChange(_ textView: UITextView) {
+        print("1")
+    }
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        print("3")
+        return true
+    }
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print("4")
+//        textView.editable = false
+        return false
+    }
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        textView1.resignFirstResponder()
+        return true
+    }
 }
+
